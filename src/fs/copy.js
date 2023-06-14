@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const copyFrom = "src/fs/files";
-const copyTo = "src/fs/files_copy";
-
 const copy = async () => {
+  const copyFrom = "src/fs/files";
+  const copyTo = "src/fs/files_copy";
+
   if (fs.existsSync(copyTo) || !fs.existsSync(copyFrom)) {
     throw new Error("FS operation failed");
   } else {

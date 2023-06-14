@@ -1,4 +1,5 @@
 import fs from "fs";
+const { promises: fsProm } = fs;
 
 const create = async () => {
   const filePath = "src/fs/files/fresh.txt";
@@ -7,16 +8,13 @@ const create = async () => {
   if (fs.existsSync(filePath)) {
     throw new Error("FS operation failed");
   }
-  return new Promise((res, rej) => {
-    fs.writeFile(filePath, fileContent, (err) => {
-      if (err) {
-        rej(err);
-      } else {
-        console.log("File created");
-        res();
-      }
-    });
-  });
+
+  try {
+    await fsProm.writeFile(filePath, fileContent);
+    console.log("File created");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 await create();
