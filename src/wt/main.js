@@ -15,14 +15,14 @@ const performCalculations = async () => {
       workerStream.on("error", () => res({ status: "error", data: null }));
     });
 
-  const array = [];
+  const arrayPromise = [];
 
   for (let i = 0; i < numCores; i++) {
-    const promis = calculateData(10 + i);
-    array.push(promis);
+    const promise = calculateData(10 + i);
+    arrayPromise.push(promise);
   }
 
-  const finalArray = await Promise.all(array);
+  const finalArray = await Promise.all(arrayPromise);
   console.log(finalArray);
 };
 
