@@ -1,10 +1,10 @@
 import fs from "fs";
 const { promises: fsProm } = fs;
 
-const create = async () => {
-  const filePath = "src/fs/files/fresh.txt";
-  const fileContent = "I am fresh and young";
+const filePath = "src/fs/files/fresh.txt";
+const fileContent = "I am fresh and young";
 
+const create = async () => {
   if (fs.existsSync(filePath)) {
     throw new Error("FS operation failed");
   }
